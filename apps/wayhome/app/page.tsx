@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <main>
       <h1>WayHome</h1>
-      <Button appName="wayhome">Click me!</Button>
+      <Button>Click me!</Button>
     </main>
   );
 };
