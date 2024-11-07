@@ -3,7 +3,7 @@
 export default $config({
   app(input) {
     return {
-      name: "test",
+      name: "wayleadr-platform",
       removal: input?.stage === "production" ? "retain" : "remove",
       home: "aws",
     };
