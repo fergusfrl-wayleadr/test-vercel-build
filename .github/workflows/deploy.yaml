@@ -11,8 +11,8 @@ jobs:
     name: Build and Test
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    # To use Remote Caching, uncomment the next lines and follow the steps below.
-    # env:
+
+    # TODO: add turbo caching.
     #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     #  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
@@ -37,3 +37,20 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      # TODO: add tests.
+      # - name: Test
+      #   run: pnpm test
+
+      - name: Install AWS credentials
+        run: |
+          mkdir ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
+
+      - name: Deploy to AWS
+        run: yarn sst deploy --stage production
+
+      - name: Clean up
+        run: rm -rf ~/.aws

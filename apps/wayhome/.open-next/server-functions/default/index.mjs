@@ -1,1 +1,0 @@
-export * from "./apps/wayhome/index.mjs";

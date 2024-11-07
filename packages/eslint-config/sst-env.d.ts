@@ -6,13 +6,5 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
-    "WayHome": {
-      "type": "sst.aws.Nextjs"
-      "url": string
-    }
-    "WayShuttle": {
-      "type": "sst.aws.Nextjs"
-      "url": string
-    }
   }
 }
