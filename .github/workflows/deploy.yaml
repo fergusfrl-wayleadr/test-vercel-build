@@ -50,7 +50,13 @@ jobs:
           echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
 
       - name: Deploy to AWS
-        run: pnpm sst deploy --stage production
+        run: pnpm sst unlock --stage production
+
+      - name: Deploy to AWS
+        run: pnpm sst remove --stage production
+
+      # - name: Deploy to AWS
+      #   run: pnpm sst deploy --stage production
 
       - name: Clean up
         run: rm -rf ~/.aws
